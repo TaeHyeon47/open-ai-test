@@ -1,13 +1,11 @@
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-const configuration = new Configuration({
+const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-const openai = new OpenAIApi(configuration);
 
 /**
  * ChatGPT API를 호출하여 답변 생성
@@ -16,8 +14,8 @@ const openai = new OpenAIApi(configuration);
  */
 export const getChatGPTResponse = async (question: string): Promise<string> => {
   try {
-    const response = await openai.createChatCompletion({
-      model: "gpt-4", // 또는 "gpt-3.5-turbo"
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo", // 또는 "gpt-3.5-turbo"
       messages: [
         {
           role: "system",
@@ -29,7 +27,7 @@ export const getChatGPTResponse = async (question: string): Promise<string> => {
     });
 
     return (
-      response.data.choices[0].message?.content || "답변을 생성할 수 없습니다."
+      response.choices[0]?.message?.content || "답변을 생성할 수 없습니다."
     );
   } catch (error) {
     console.error("ChatGPT API 호출 오류:", error);
