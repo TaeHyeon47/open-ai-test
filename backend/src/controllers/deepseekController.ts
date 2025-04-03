@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { getGeminiResponse } from "../services/geminiService";
+import { getDeepseekResponse } from "../services/deepseekServiece";
 
-exports.getGemini = async (req: Request, res: Response) => {
+exports.getDeepseek = async (req: Request, res: Response) => {
   try {
     const { question } = req.body;
     if (!question)
@@ -10,10 +10,10 @@ exports.getGemini = async (req: Request, res: Response) => {
     // 쿼리 스트링에서 모델 이름을 가져옵니다
     const modelName = req.query.model as string;
 
-    const response = await getGeminiResponse(question, modelName);
+    const response = await getDeepseekResponse(question, modelName);
     res.json({ response });
   } catch (error) {
-    console.error("Gemini API 오류:", error);
+    console.error("Deepseek API 오류:", error);
     res.status(500).json({ error: "서버 오류 발생" });
   }
 };

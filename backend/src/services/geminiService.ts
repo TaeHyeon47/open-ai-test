@@ -8,13 +8,16 @@ const geminiAi = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 /**
  * Google Gemini API를 호출하여 답변 생성
  * @param question 사용자의 문의사항
+ * @param modelName 사용할 모델 이름
  * @returns Gemini API 응답
  */
-
-export const getGeminiResponse = async (question: string): Promise<string> => {
+export const getGeminiResponse = async (
+  question: string,
+  modelName: string = "gemini-2.5-pro-exp-03-25"
+): Promise<string> => {
   try {
     const response = await geminiAi.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: modelName,
       contents: question,
     });
 

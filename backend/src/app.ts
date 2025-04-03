@@ -13,6 +13,8 @@ app.get("/", (req: Request, res: Response): void => {
 
 app.use("/api/chatgpt", require("./routes/chatgptRoutes"));
 app.use("/api/gemini", require("./routes/geminiRoutes"));
+app.use("/api/deepseek", require("./routes/deepseekRoutes"));
+app.use("/api/openrouter", require("./routes/openRouterRoutes"));
 
 // 서버 시작
 app.listen(port, (): void => {
