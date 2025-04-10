@@ -6,6 +6,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { Box, CssBaseline } from '@mui/material';
 import EnvironmentComponent from '@/EnvironmentComponent';
 import { DrawerHeader } from '@/components/common/DrawerHeader';
+import { Providers } from '@/redux/provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,24 +31,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <AppRouterCacheProvider options={{ key: 'css' }}>
-          <EnvironmentComponent>
-            <Box sx={{ display: 'flex' }}>
-              <MainHeader />
-              <CssBaseline />
-              <Box
-                component="main"
-                sx={{
-                  height: 'calc(100vh)',
-                  width: '100%',
-                }}
-              >
-                <DrawerHeader />
-                {children}
+        <Providers>
+          <AppRouterCacheProvider options={{ key: 'css' }}>
+            <EnvironmentComponent>
+              <Box sx={{ display: 'flex' }}>
+                <MainHeader />
+                <CssBaseline />
+                <Box
+                  component="main"
+                  sx={{
+                    height: 'calc(100vh)',
+                    width: '100%',
+                  }}
+                >
+                  <DrawerHeader />
+                  {children}
+                </Box>
               </Box>
-            </Box>
-          </EnvironmentComponent>
-        </AppRouterCacheProvider>
+            </EnvironmentComponent>
+          </AppRouterCacheProvider>
+        </Providers>
       </body>
     </html>
   );

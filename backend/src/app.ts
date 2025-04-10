@@ -1,8 +1,17 @@
 // src/app.ts
 import express, { Request, Response } from "express"; // express와 타입을 import
+import cors from "cors";
 
 const app = express();
 const port = 5000;
+
+// CORS 설정
+app.use(
+  cors({
+    origin: "http://localhost:3000", // 프론트엔드 URL
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 

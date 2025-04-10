@@ -1,4 +1,7 @@
 import OpenAI from "openai";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
@@ -15,6 +18,9 @@ export const getOpenRouterResponse = async (
   question: string,
   modelName: string = "google/gemini-2.0-flash-exp:free"
 ): Promise<string> => {
+  console.log("question", question);
+  console.log("modelName", modelName);
+
   try {
     const completion = await openai.chat.completions.create({
       model: modelName,
@@ -26,7 +32,7 @@ export const getOpenRouterResponse = async (
       ],
     });
 
-    console.log("modelName", modelName);
+    console.log("completion", completion);
 
     return (
       completion.choices[0].message.content || "답변을 생성할 수 없습니다."

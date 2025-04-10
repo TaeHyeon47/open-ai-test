@@ -10,10 +10,13 @@ const apiService = axios.create({
   },
 });
 
-export const chatService = {
-  sendQuestion: async (question: string) => {
+const openRouterService = {
+  sendQuestion: async (question: string, modelName: string) => {
     try {
-      const response = await apiService.post('/api/chatgpt', { question });
+      const response = await apiService.post('/api/openrouter', {
+        question,
+        modelName,
+      });
       return response.data;
     } catch (error) {
       console.error('Error sending question:', error);
@@ -22,4 +25,5 @@ export const chatService = {
   },
 };
 
+export { openRouterService };
 export default apiService;

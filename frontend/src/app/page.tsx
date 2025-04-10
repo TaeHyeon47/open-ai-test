@@ -1,7 +1,6 @@
-import ResponsiveGrid from '@/components/layout/ResponsiveGrid';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import QuestionTextField from '@/components/button/QuestionTextField';
+import ShowAI from '@/components/home/ShowAI';
 
 export default function Home() {
   return (
@@ -14,15 +13,15 @@ export default function Home() {
           flexGrow: 1,
         }}
       >
+        <ShowAI />
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'space-between', // space-evenly를 space-between으로 변경
-            minHeight: '86vh', // viewport 전체 높이를 최소 높이로 설정
+            justifyContent: 'space-between',
+            minHeight: '86vh',
           }}
         >
-          <ResponsiveGrid />
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <QuestionTextField />
           </Box>
