@@ -105,6 +105,12 @@ export default function ModelSelector() {
     setIsDragging(false);
   };
 
+  const handleModelMinus = (e: React.DragEvent, model: AIModel) => {
+    setShowSelectedModel((selectedAIList) => {
+      return selectedAIList.filter((m) => m.id !== model.id);
+    });
+  };
+
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
   };
@@ -132,7 +138,10 @@ export default function ModelSelector() {
       >
         {showSelectedModel.length > 0 ? (
           showSelectedModel.map((selectedModel) => (
-            <ModelCard key={selectedModel.id}>
+            <ModelCard
+              key={selectedModel.id}
+              onMouseDown={(e: never) => handleModelMinus(e, selectedModel)}
+            >
               <ModelIcon>{selectedModel.icon}</ModelIcon>
               <ModelName>{selectedModel.name}</ModelName>
               {/* <ModelDescription>{selectedModel.description}</ModelDescription> */}
