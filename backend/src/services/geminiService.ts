@@ -15,6 +15,9 @@ export const getGeminiResponse = async (
   question: string,
   modelName: string = "gemini-2.5-pro-exp-03-25"
 ): Promise<string> => {
+  console.log("Google Dev question", question);
+  console.log("Google Dev modelName", modelName);
+
   try {
     const response = await geminiAi.models.generateContent({
       model: modelName,

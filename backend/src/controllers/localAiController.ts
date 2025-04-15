@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { getGeminiResponse } from "../services/geminiService";
+import { getLocalAiResponse } from "../services/localAiService";
 
-exports.getGemini = async (req: Request, res: Response) => {
+exports.getLocalAi = async (req: Request, res: Response) => {
   try {
     const { question, modelName } = req.body;
     if (!question)
       return res.status(400).json({ error: "문의 내용을 입력하세요." });
 
-    const response = await getGeminiResponse(question, modelName);
+    const response = await getLocalAiResponse(question, modelName);
     res.json({ response });
   } catch (error) {
     console.error("Gemini API 오류:", error);

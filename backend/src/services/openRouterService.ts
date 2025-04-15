@@ -5,21 +5,21 @@ dotenv.config();
 
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY,
+  apiKey: process.env.OPENROUTER_API_KEY2,
 });
 
 /**
  * OpenRouter API를 호출하여 답변 생성
  * @param question 사용자의 문의사항
  * @param modelName 사용할 모델 이름
- * @returns Gemini API 응답
+ * @returns OpenRouter API 응답
  */
 export const getOpenRouterResponse = async (
-  question: string,
-  modelName: string = "google/gemini-2.0-flash-exp:free"
+  question: string = "안녕하세요",
+  modelName: string = "qwen/qwq-32b:free"
 ): Promise<string> => {
-  console.log("question", question);
-  console.log("modelName", modelName);
+  console.log("Request Question", question);
+  console.log("Request ModelName", modelName);
 
   try {
     const completion = await openai.chat.completions.create({
@@ -31,7 +31,7 @@ export const getOpenRouterResponse = async (
         },
       ],
     });
-
+    //
     console.log("completion", completion);
 
     return (

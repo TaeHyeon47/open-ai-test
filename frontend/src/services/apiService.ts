@@ -11,13 +11,31 @@ const apiService = axios.create({
 });
 
 const openRouterService = {
-  sendQuestion: async (question: string, modelName: string) => {
+  sendQuestion: async (
+    question: string,
+    modelName: string,
+    modelId: string
+  ) => {
     try {
-      const response = await apiService.post('/api/openrouter', {
-        question,
-        modelName,
-      });
-      return response.data;
+      if (modelId.includes('openrouter')) {
+        const response = await apiService.post('/api/openrouter', {
+          question,
+          modelName,
+        });
+        return response.data;
+      } else if (modelId.includes('googledev')) {
+        const response = await apiService.post('/api/gemini', {
+          question,
+          modelName,
+        });
+        return response.data;
+      } else if (modelId.includes('localdev')) {
+        const response = await apiService.post('/api/localai', {
+          question,
+          modelName,
+        });
+        return response.data;
+      }
     } catch (error) {
       console.error('Error sending question:', error);
       throw error;

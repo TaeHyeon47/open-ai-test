@@ -16,6 +16,8 @@ export default function QuestionTextField() {
     (state) => state.selectedAiList.selectedAiList
   );
 
+  console.log('modelList', modelList);
+
   const handleSubmitQuestion = async (
     question: string,
     modelList: AIModel[]
@@ -26,10 +28,12 @@ export default function QuestionTextField() {
     }
 
     const modelPromises = modelList.map(async (model) => {
+      console.log('model', model);
       try {
         const response = await openRouterService.sendQuestion(
           question,
-          model.name
+          model.model,
+          model.id
         );
         return {
           model: model.name,
