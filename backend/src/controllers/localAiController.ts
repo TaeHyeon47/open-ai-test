@@ -10,7 +10,7 @@ exports.getLocalAi = async (req: Request, res: Response) => {
     const response = await getLocalAiResponse(question, modelName);
     res.json({ response });
   } catch (error) {
-    console.error("Gemini API 오류:", error);
+    console.error("Local AI API 오류:", error);
     res.status(500).json({ error: "서버 오류 발생" });
   }
 };

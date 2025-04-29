@@ -8,7 +8,8 @@ const port = 5000;
 // CORS 설정
 app.use(
   cors({
-    origin: "http://localhost:3000", // 프론트엔드 URL
+    origin: "*", // 또는 'https://904c-1-220-27-154.ngrok-free.app'
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );

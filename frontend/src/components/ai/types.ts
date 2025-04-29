@@ -104,11 +104,11 @@ export const availableModels: AIModel[] = [
     icon: '🤖',
   },
   {
-    id: 'openrouter/optimus-alpha-openrouter',
-    name: 'Optimus Alpha (OpenRouter)',
+    id: 'shisa-ai/shisa-v2-llama3.3-70b-openrouter',
+    name: 'Shisa AI: Shisa V2 Llama 3.3 70B (OpenRouter)',
     description:
       'This is a cloaked model provided to the community to gather feedback. Its geared toward real world use cases, including programming. Note: All prompts and completions for this model are logged by the provider and may be used to improve the model.',
-    model: 'openrouter/optimus-alpha',
+    model: 'shisa-ai/shisa-v2-llama3.3-70b:free',
     icon: '🤖',
   },
   {

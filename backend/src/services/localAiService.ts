@@ -40,7 +40,7 @@ export const getLocalAiResponse = async (
 
     return data.choices[0].message.content || "답변을 생성할 수 없습니다.";
   } catch (error) {
-    console.error("Gemini API 호출 오류:", error);
-    throw new Error("Gemini API 요청 실패");
+    console.error("Local AI API 호출 오류:", error);
+    throw new Error("Local AI API 요청 실패");
   }
 };

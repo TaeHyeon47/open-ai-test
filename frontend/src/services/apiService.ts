@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 const apiService = axios.create({
   baseURL: API_BASE_URL,
@@ -16,6 +15,9 @@ const openRouterService = {
     modelName: string,
     modelId: string
   ) => {
+    console.log('modelId', modelId);
+    console.log('modelName', modelName);
+
     try {
       if (modelId.includes('openrouter')) {
         const response = await apiService.post('/api/openrouter', {

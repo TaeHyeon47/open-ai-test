@@ -29,6 +29,10 @@ export const AiResponseList = createSlice({
       state.loading = false;
       state.AiResponseList = action.payload;
     },
+    AI_RESPONSE_LIST_RESET(state) {
+      state.loading = false;
+      state.AiResponseList = [];
+    },
   },
 });
 
