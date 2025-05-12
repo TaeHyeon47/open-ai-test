@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import MainHeader from '@/components/common/MainHeader';
+import MainHeaderDesktop from '@/components/common/MainHeaderDesktop';
+import MainHeaderMobile from '@/components/common/MainHeaderMobile';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { Box, CssBaseline } from '@mui/material';
 import EnvironmentComponent from '@/EnvironmentComponent';
-import { DrawerHeader } from '@/components/common/DrawerHeader';
+import { DrawerHeader } from '@/components/common/DrawerHeaderDesktop';
 import { Providers } from '@/redux/provider';
 
 const geistSans = Geist({
@@ -35,7 +36,8 @@ export default function RootLayout({
           <AppRouterCacheProvider options={{ key: 'css' }}>
             <EnvironmentComponent>
               <Box sx={{ display: 'flex' }}>
-                <MainHeader />
+                {/* <MainHeaderDesktop /> */}
+                <MainHeaderMobile />
                 <CssBaseline />
                 <Box
                   component="main"

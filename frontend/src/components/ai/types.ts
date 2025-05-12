@@ -39,24 +39,4 @@ export const availableModels: AIModel[] = [
     model: 'meta-llama/llama-3.3-70b-instruct:free',
     icon: '🦙',
   },
-  // {
-  //   id: 'quasar-alpha',
-  //   name: 'Quasar Alpha',
-  //   description:
-  //     'This is a cloaked model provided to the community to gather feedback. It’s a powerful, all-purpose model supporting long-context tasks, including code generation. All prompts and completions for this model are logged by the provider as well as OpenRouter.',
-  //   model: 'openrouter/quasar-alpha',
-  //   icon: '🤖',
-  // },
-  // {
-  //   id: 'gpt4',
-  //   name: 'GPT-4',
-  //   description: 'OpenAI의 최신 AI 모델',
-  //   icon: '🧠',
-  // },
-  // {
-  //   id: 'mistral',
-  //   name: 'Mistral',
-  //   description: '고성능 오픈소스 AI 모델',
-  //   icon: '🌪️',
-  // },
 ];

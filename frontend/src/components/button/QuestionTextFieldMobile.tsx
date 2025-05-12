@@ -7,14 +7,10 @@ import { useAppSelector } from '@/redux/hooks';
 import { AIModel } from '../ai/types';
 import { useDispatch } from 'react-redux';
 import { AiResponseListAction } from '@/redux/features/AiResponseListSlice';
-import { useMediaQuery, useTheme } from '@mui/material';
 
-export default function QuestionTextField() {
+export default function QuestionTextFieldMobile() {
   const [question, setQuestion] = useState('');
   const dispatch = useDispatch();
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const modelList = useAppSelector(
     (state) => state.selectedAiList.selectedAiList
@@ -58,7 +54,7 @@ export default function QuestionTextField() {
       id="outlined-basic"
       label="무엇이든 물어보세요!"
       multiline
-      maxRows={isMobile ? 18 : 8}
+      maxRows={18}
       value={question}
       onChange={(e) => setQuestion(e.target.value)}
       onKeyDown={(e) => {
@@ -69,15 +65,12 @@ export default function QuestionTextField() {
           handleSubmitQuestion(question, modelList);
         }
       }}
-      size={isMobile ? 'small' : 'medium'}
-      // variant={isMobile ? 'standard' : 'outlined'} // ✅ 모바일이면 테두리 없음
+      size="small"
       variant="standard"
-      // sx={{ width: { xs: '95%', sm: '30%' } }}
       sx={{
         mb: { xs: 3.5, sm: 0 },
         mt: { xs: 2, sm: 0 },
         width: { xs: '95%', sm: '30%' },
-        // ✅ 테두리/밑줄 제거
         '& .MuiInputBase-root:before': {
           borderBottom: 'none',
         },
@@ -88,12 +81,9 @@ export default function QuestionTextField() {
           borderBottom: 'none',
         },
         '& .MuiOutlinedInput-notchedOutline': {
-          border: isMobile ? 'none' : undefined,
+          border: 'none',
         },
       }}
-      // InputProps={{
-      //   disableUnderline: true, // ✅ underline 제거 (standard에서)
-      // }}
     />
   );
 }

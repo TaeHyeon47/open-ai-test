@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box';
 import QuestionTextField from '@/components/button/QuestionTextField';
 import ShowAI from '@/components/home/ShowAI';
+import { Typography } from '@mui/material';
+import ModelSelectorMobile from '@/components/ai/ModelSelectorMobile';
 
 export default function Home() {
   return (
@@ -13,8 +15,20 @@ export default function Home() {
           flexGrow: 1,
         }}
       >
-        <ShowAI />
-        <Box
+        <ModelSelectorMobile />
+        {/* <Typography
+          variant="h4"
+          component="h1"
+          sx={{
+            fontWeight: 'bold',
+            textAlign: 'center',
+            mb: 2,
+          }}
+        >
+          asdlkmasldkmklasmdklamsd
+        </Typography> */}
+        {/* <ShowAI /> */}
+        {/* <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -25,7 +39,7 @@ export default function Home() {
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <QuestionTextField />
           </Box>
-        </Box>
+        </Box> */}
       </Box>
     </>
   );
