@@ -68,47 +68,57 @@ const ListItem = styled('li')(({ theme }) => ({
 
 export default function ModelSelectorMobile() {
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        px: 2,
-        py: 1,
-        borderRadius: '16px 16px 0 0',
-        backgroundColor: '#3F3C3C',
-        minHeight: 200,
-        zIndex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <Box
+    <Box>
+      <Paper
+        elevation={3}
         sx={{
-          overflowX: 'auto',
-          maxWidth: 500,
-          listStyle: 'none',
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          px: 2,
+          py: 1,
+          borderRadius: '16px 16px 0 0',
+          backgroundColor: '#3F3C3C',
+          minHeight: 200,
+          zIndex: 1,
           display: 'flex',
-          flexWrap: 'wrap',
-          maxHeight: 3 * 40 + 16, // 3줄 * 40px 높이 + 여유 margin
+          flexDirection: 'column',
+          overflowX: 'scroll',
+          listStyle: 'none',
         }}
       >
-        {/* <Stack direction="row" spacing={1}> */}
-        {chipData.map((chip, index) => (
-          <ListItem key={chip.id} sx={{ width: 'auto', padding: 0 }}>
-            <StyledChip
-              key={index}
-              icon={<FaceIcon />}
-              label={chip.label}
-              variant="outlined"
-            />
-          </ListItem>
-        ))}
-        {/* </Stack> */}
-      </Box>
-      {/* <Box
+        <Box
+          sx={{
+            overflowX: 'scroll',
+            width: '1200px',
+            flexWrap: 'wrap',
+            display: 'flex',
+            justifyContent: 'flex-start',
+          }}
+        >
+          {/* <Stack direction="row" spacing={1}> */}
+
+          {chipData.map((chip, index) => (
+            <ListItem key={index}>
+              <StyledChip
+                // sx={{
+                //   flex: '0 0 auto',
+                //   display: 'flex',
+                //   alignItems: 'center',
+                //   justifyContent: 'center',
+                // }}
+                key={index}
+                icon={<FaceIcon />}
+                label={chip.label}
+                variant="outlined"
+                // sx={{ display: 'inline-block' }}
+              />
+            </ListItem>
+          ))}
+          {/* </Stack> */}
+        </Box>
+        {/* <Box
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -119,9 +129,10 @@ export default function ModelSelectorMobile() {
           },
         }}
       > */}
-      <QuestionTextFieldMobile />
+        {/* <QuestionTextFieldMobile /> */}
 
-      {/* </Box> */}
-    </Paper>
+        {/* </Box> */}
+      </Paper>
+    </Box>
   );
 }
