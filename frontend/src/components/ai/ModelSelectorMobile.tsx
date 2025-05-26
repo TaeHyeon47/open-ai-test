@@ -4,13 +4,11 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import QuestionTextFieldMobile from '../button/QuestionTextFieldMobile';
-import Stack from '@mui/material/Stack';
 import FaceIcon from '@mui/icons-material/Face';
 import { styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
-import TextField from '@mui/material/TextField';
 
-const StyledChip = styled(Chip)(({ theme }) => ({
+const StyledChip = styled(Chip)(() => ({
   fontWeight: 'bold',
   borderRadius: '8px',
   padding: '0 4px',
@@ -80,7 +78,6 @@ export default function ModelSelectorMobile() {
           py: 1,
           borderRadius: '16px 16px 0 0',
           backgroundColor: '#3F3C3C',
-          minHeight: 200,
           zIndex: 1,
           display: 'flex',
           flexDirection: 'column',
@@ -97,41 +94,18 @@ export default function ModelSelectorMobile() {
             justifyContent: 'flex-start',
           }}
         >
-          {/* <Stack direction="row" spacing={1}> */}
-
           {chipData.map((chip, index) => (
             <ListItem key={index}>
               <StyledChip
-                // sx={{
-                //   flex: '0 0 auto',
-                //   display: 'flex',
-                //   alignItems: 'center',
-                //   justifyContent: 'center',
-                // }}
                 key={index}
                 icon={<FaceIcon />}
                 label={chip.label}
                 variant="outlined"
-                // sx={{ display: 'inline-block' }}
               />
             </ListItem>
           ))}
-          {/* </Stack> */}
         </Box>
-        {/* <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          '& > :not(style)': {
-            m: 1,
-            width: 128,
-            height: 128,
-          },
-        }}
-      > */}
-        {/* <QuestionTextFieldMobile /> */}
-
-        {/* </Box> */}
+        <QuestionTextFieldMobile />
       </Paper>
     </Box>
   );
