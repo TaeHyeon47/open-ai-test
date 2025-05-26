@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import { openRouterService } from '@/services/apiService';
 import { useAppSelector } from '@/redux/hooks';
@@ -10,6 +10,7 @@ import { AiResponseListAction } from '@/redux/features/AiResponseListSlice';
 
 export default function QuestionTextFieldMobile() {
   const [question, setQuestion] = useState('');
+  const [rows, setRows] = useState(1);
   const dispatch = useDispatch();
 
   const modelList = useAppSelector(
@@ -49,12 +50,19 @@ export default function QuestionTextFieldMobile() {
     dispatch(AiResponseListAction.AI_RESPONSE_LIST_SUCCESS(responses));
   };
 
+  useEffect(() => {
+    setRows(0);
+  }, []);
+
   return (
     <TextField
       id="outlined-basic"
-      label="무엇이든 물어보세요!"
+      autoFocus
+      placeholder="무엇이든 물어보세요!"
       multiline
       maxRows={18}
+      minRows={1}
+      rows={rows}
       value={question}
       onChange={(e) => setQuestion(e.target.value)}
       onKeyDown={(e) => {
@@ -66,11 +74,10 @@ export default function QuestionTextFieldMobile() {
         }
       }}
       size="small"
-      variant="standard"
       sx={{
-        mb: { xs: 3.5, sm: 0 },
+        // mb: { xs: 3.5, sm: 0 },
         mt: { xs: 2, sm: 0 },
-        width: { xs: '95%', sm: '30%' },
+        width: { xs: '100%', sm: '30%' },
         '& .MuiInputBase-root:before': {
           borderBottom: 'none',
         },

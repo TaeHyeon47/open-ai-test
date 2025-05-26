@@ -2,63 +2,62 @@
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import QuestionTextFieldMobile from '../button/QuestionTextFieldMobile';
-import Stack from '@mui/material/Stack';
-import FaceIcon from '@mui/icons-material/Face';
 import { styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
-import TextField from '@mui/material/TextField';
+import Avatar from '@mui/material/Avatar';
+import AddIcon from '@mui/icons-material/Add';
+import MicIcon from '@mui/icons-material/Mic';
 
-const StyledChip = styled(Chip)(({ theme }) => ({
+const StyledChip = styled(Chip)(({}) => ({
   fontWeight: 'bold',
   borderRadius: '8px',
-  padding: '0 4px',
+  padding: '0 0px',
   margin: '4px',
 }));
 
 const chipData = [
   {
-    id: 'gemini_2.5',
-    label: 'Gemini 2.5 Pro Experimental',
-    description:
-      'Gemini 2.5 Pro is Google’s state-of-the-art AI model designed for advanced reasoning, coding, mathematics, and scientific tasks. It employs “thinking” capabilities, enabling it to reason through responses with enhanced accuracy and nuanced context handling. Gemini 2.5 Pro achieves top-tier performance on multiple benchmarks, including first-place positioning on the LMArena leaderboard, reflecting superior human-preference alignment and complex problem-solving abilities.',
-    model: 'google/gemini-2.5-pro-exp-03-25:free',
-  },
-  {
-    id: 'deepseek_v3_0324',
-    label: 'DeepSeek V3 0324 ',
-    description:
-      'DeepSeek V3, a 685B-parameter, mixture-of-experts model, is the latest iteration of the flagship chat model family from the DeepSeek team. It succeeds the DeepSeek V3 model and performs really well on a variety of tasks.',
-    model: 'deepseek/deepseek-chat-v3-0324:free',
-  },
-  {
-    id: 'deepseek_r1',
-    label: 'DeepSeek R1',
-    description:
-      'DeepSeek R1 is here: Performance on par with OpenAI o1, but open-sourced and with fully open reasoning tokens. Its 671B parameters in size, with 37B active in an inference pass.',
-    model: 'deepseek/deepseek-r1:free',
+    id: 'chatgpt_4o',
+    label: 'ChatGPT 4o Mini',
+    model: 'openai/gpt-4o-mini',
+    src: '/images/ai-model/ChatGPT-4o.jpeg',
   },
   {
     id: 'gemini_2.5',
-    label: 'Gemini 2.5 Pro Experimental',
-    description:
-      'Gemini 2.5 Pro is Google’s state-of-the-art AI model designed for advanced reasoning, coding, mathematics, and scientific tasks. It employs “thinking” capabilities, enabling it to reason through responses with enhanced accuracy and nuanced context handling. Gemini 2.5 Pro achieves top-tier performance on multiple benchmarks, including first-place positioning on the LMArena leaderboard, reflecting superior human-preference alignment and complex problem-solving abilities.',
+    label: 'Gemini 2.5 Pro Exp',
     model: 'google/gemini-2.5-pro-exp-03-25:free',
+    src: '/images/ai-model/Gemini-2.5-Pro.jpeg',
   },
   {
     id: 'deepseek_v3_0324',
-    label: 'DeepSeek V3 0324 ',
-    description:
-      'DeepSeek V3, a 685B-parameter, mixture-of-experts model, is the latest iteration of the flagship chat model family from the DeepSeek team. It succeeds the DeepSeek V3 model and performs really well on a variety of tasks.',
+    label: 'DeepSeek V3 0324',
     model: 'deepseek/deepseek-chat-v3-0324:free',
+    src: '/images/ai-model/DeepSeek-V3.jpeg',
   },
   {
-    id: 'deepseek_r1',
-    label: 'DeepSeek R1',
-    description:
-      'DeepSeek R1 is here: Performance on par with OpenAI o1, but open-sourced and with fully open reasoning tokens. Its 671B parameters in size, with 37B active in an inference pass.',
-    model: 'deepseek/deepseek-r1:free',
+    id: 'claude-3.7-sonnet',
+    label: 'Claude 3.7 Sonnet',
+    model: 'anthropic/claude-3.7-sonnet',
+    src: '/images/ai-model/Claude-3.7-Sonnet.jpeg',
+  },
+  {
+    id: 'grok-3-beta',
+    label: 'Grok 3 Beta',
+    model: 'x-ai/grok-3-beta',
+    src: '/images/ai-model/Grok-3.jpeg',
+  },
+  {
+    id: 'llama-4-maverick:free',
+    label: 'Llama 4 Maverick',
+    model: 'meta-llama/llama-4-maverick:free',
+    src: '/images/ai-model/Meta-Llama-4-Maverick.jpeg',
+  },
+  {
+    id: 'qwen3-235b-a22b:free',
+    label: 'Qwen3 235B A22B ',
+    model: 'qwen/qwen3-235b-a22b:free',
+    src: '/images/ai-model/Qwen3-235B-A22B-FW.jpeg',
   },
 ];
 
@@ -68,19 +67,22 @@ const ListItem = styled('li')(({ theme }) => ({
 
 export default function ModelSelectorMobile() {
   return (
-    <Box>
-      <Paper
-        elevation={3}
+    <Box
+      sx={{
+        position: 'fixed',
+        display: 'flex',
+        flexDirection: 'column',
+        bottom: 0,
+        left: 0,
+        right: 0,
+      }}
+    >
+      <Box
         sx={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          px: 2,
+          px: 1,
           py: 1,
           borderRadius: '16px 16px 0 0',
           backgroundColor: '#3F3C3C',
-          minHeight: 200,
           zIndex: 1,
           display: 'flex',
           flexDirection: 'column',
@@ -97,42 +99,43 @@ export default function ModelSelectorMobile() {
             justifyContent: 'flex-start',
           }}
         >
-          {/* <Stack direction="row" spacing={1}> */}
-
           {chipData.map((chip, index) => (
             <ListItem key={index}>
               <StyledChip
-                // sx={{
-                //   flex: '0 0 auto',
-                //   display: 'flex',
-                //   alignItems: 'center',
-                //   justifyContent: 'center',
-                // }}
                 key={index}
-                icon={<FaceIcon />}
+                avatar={<Avatar alt="Natacha" src={chip.src} />}
                 label={chip.label}
                 variant="outlined"
-                // sx={{ display: 'inline-block' }}
               />
             </ListItem>
           ))}
-          {/* </Stack> */}
         </Box>
-        {/* <Box
+      </Box>
+      <Box
         sx={{
+          backgroundColor: '#3F3C3C',
+          borderRadius: 0,
+          zIndex: 1,
           display: 'flex',
-          flexWrap: 'wrap',
-          '& > :not(style)': {
-            m: 1,
-            width: 128,
-            height: 128,
-          },
+          flexDirection: 'column',
+          overflowX: 'scroll',
+          listStyle: 'none',
         }}
-      > */}
-        {/* <QuestionTextFieldMobile /> */}
+      >
+        <QuestionTextFieldMobile />
 
-        {/* </Box> */}
-      </Paper>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            mx: 1,
+            mb: 1,
+          }}
+        >
+          <AddIcon />
+          <MicIcon />
+        </Box>
+      </Box>
     </Box>
   );
 }

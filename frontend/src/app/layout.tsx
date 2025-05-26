@@ -4,7 +4,7 @@ import './globals.css';
 import MainHeaderDesktop from '@/components/common/MainHeaderDesktop';
 import MainHeaderMobile from '@/components/common/MainHeaderMobile';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { Box, CssBaseline } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import EnvironmentComponent from '@/EnvironmentComponent';
 import { DrawerHeader } from '@/components/common/DrawerHeaderDesktop';
 import { Providers } from '@/redux/provider';
@@ -33,12 +33,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
-          <AppRouterCacheProvider options={{ key: 'css' }}>
+          <AppRouterCacheProvider options={{ key: 'mui' }}>
             <EnvironmentComponent>
               <Box sx={{ display: 'flex' }}>
                 {/* <MainHeaderDesktop /> */}
                 <MainHeaderMobile />
-                <CssBaseline />
                 <Box
                   component="main"
                   sx={{
@@ -46,6 +45,7 @@ export default function RootLayout({
                     width: '100%',
                   }}
                 >
+                  <CssBaseline />
                   <DrawerHeader />
                   {children}
                 </Box>
